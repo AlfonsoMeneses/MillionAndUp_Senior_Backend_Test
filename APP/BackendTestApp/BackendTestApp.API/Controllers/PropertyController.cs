@@ -51,7 +51,7 @@ namespace BackendTestApp.API.Controllers
         {
             try
             {
-                var res =  _service.Create(newProperty.Name, newProperty.Address, newProperty.Price, newProperty.Year);
+                var res =  _service.Create(newProperty.Name, newProperty.Address, newProperty.Price, newProperty.Year, newProperty.IdOwner);
                 return Ok(res);
             }
             catch (PropertyException pex)

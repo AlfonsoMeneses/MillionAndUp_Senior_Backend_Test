@@ -9,7 +9,7 @@ namespace BackendTestApp.Contracts.Services
 {
     public interface IPropertyService
     {
-        PropertyDto Create(string name, string address, decimal price, int year);
+        PropertyDto Create(string name, string address, decimal price, int year, int? idOwner);
 
         IList<PropertyDto> GetProperties(PropertyFilter filter);
 

@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace BackendTestApp.Contracts.Models
 {
-    public class PropertyDto
+    public class OwnerDto
     {
-        public int IdProperty { get; set; }
+        public int IdOwner { get; set; }
 
         public string Name { get; set; } = null!;
 
         public string Address { get; set; } = null!;
 
-        public decimal Price { get; set; }
+        public string? Photo { get; set; }
 
-        public string CodeInternal { get; set; } = null!;
-
-        public short Year { get; set; }
-
-        public OwnerDto PropertyOwner { get; set; } = null!;
+        public DateTime Birthday { get; set; }
     }
 }

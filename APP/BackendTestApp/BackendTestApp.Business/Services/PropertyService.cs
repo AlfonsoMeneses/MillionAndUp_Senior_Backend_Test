@@ -4,6 +4,7 @@ using BackendTestApp.Contracts.Models;
 using BackendTestApp.Contracts.Services;
 using BackendTestApp.DataService;
 using BackendTestApp.DataService.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace BackendTestApp.Business.Services
         /// <param name="year"></param>
         /// <returns></returns>
         /// <exception cref="PropertyException"></exception>
-        public PropertyDto Create(string name, string address, decimal price, int year)
+        public PropertyDto Create(string name, string address, decimal price, int year, int? idOwner)
         {
             //Validations 
 
@@ -68,6 +69,21 @@ namespace BackendTestApp.Business.Services
                 CodeInternal = "P" + DateTime.Now.Ticks
             };
 
+            if (idOwner != null)
+            {
+                var owner = _db.Owners.FirstOrDefault(o => o.IdOwner == idOwner.Value);
+
+                if (owner == null)
+                {
+                    throw new PropertyException("Invalid Owner");
+                }
+                else
+                {
+                    newProperty.PropertyOwner = owner;
+                }
+            }
+                     
+
             //Saving 
             _db.Properties.Add(newProperty);
 
@@ -85,7 +101,8 @@ namespace BackendTestApp.Business.Services
         {
             var properties = new List<PropertyDto>();
 
-            var lst = _db.Properties.Where(p=>p.Name.Contains(filter.Name != null ? filter.Name: string.Empty) &&
+            var lst = _db.Properties.Include("PropertyOwner")
+                                    .Where(p=>p.Name.Contains(filter.Name != null ? filter.Name: string.Empty) &&
                                               p.Address.Contains(filter.Address!= null ? filter.Address: string.Empty) &&
                                               p.Price >= filter.MinPrice &&
                                               (p.Price <= filter.MaxPrice || filter.MaxPrice == 0) &&

@@ -12,5 +12,6 @@ namespace BackendTestApp.API.Request
         public decimal Price { get; set; }
         [Required]
         public int Year { get; set; }
+        public int? IdOwner { get; set; }
     }
 }

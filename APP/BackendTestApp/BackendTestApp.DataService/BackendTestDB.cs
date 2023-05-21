@@ -61,7 +61,7 @@ public partial class BackendTestDB : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
 
-            entity.HasOne(d => d.IdOwnerNavigation).WithMany(p => p.Properties)
+            entity.HasOne(d => d.PropertyOwner).WithMany(p => p.Properties)
                 .HasForeignKey(d => d.IdOwner)
                 .HasConstraintName("FK_Properties_Owner");
         });

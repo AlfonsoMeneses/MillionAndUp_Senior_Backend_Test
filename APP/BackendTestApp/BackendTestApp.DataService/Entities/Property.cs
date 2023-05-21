@@ -19,7 +19,7 @@ public partial class Property
 
     public int? IdOwner { get; set; }
 
-    public virtual Owner? IdOwnerNavigation { get; set; }
+    public virtual Owner? PropertyOwner { get; set; }
 
     public virtual ICollection<PropertyImage> PropertyImages { get; set; } = new List<PropertyImage>();
 
