@@ -75,7 +75,7 @@ public partial class BackendTestDB : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.IdPropertyNavigation).WithMany(p => p.PropertyImages)
+            entity.HasOne(d => d.Property).WithMany(p => p.PropertyImages)
                 .HasForeignKey(d => d.IdProperty)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PropertyImages_Property");

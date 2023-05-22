@@ -18,6 +18,9 @@ namespace BackendTestApp.Business.Mappers
 
             CreateMap<OwnerDto, Owner>();
             CreateMap<Owner, OwnerDto>();
+
+            CreateMap<PropertyImageDto, PropertyImage>();
+            CreateMap<PropertyImage, PropertyImageDto>();
         }
     }
 }

@@ -13,5 +13,5 @@ public partial class PropertyImage
 
     public short Enabled { get; set; }
 
-    public virtual Property IdPropertyNavigation { get; set; } = null!;
+    public virtual Property Property { get; set; } = null!;
 }
