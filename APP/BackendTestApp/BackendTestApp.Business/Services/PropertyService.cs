@@ -104,6 +104,7 @@ namespace BackendTestApp.Business.Services
             var properties = new List<PropertyDto>();
 
             var lst = _db.Properties.Include("PropertyOwner")
+                                    .Include("PropertyImages")
                                     .Where(p => p.Name.Contains(filter.Name != null ? filter.Name : string.Empty) &&
                                               p.Address.Contains(filter.Address != null ? filter.Address : string.Empty) &&
                                               p.Price >= filter.MinPrice &&
@@ -119,6 +120,18 @@ namespace BackendTestApp.Business.Services
             }
 
             return properties;
+        }
+
+        /// <summary>
+        /// Get Property By ID
+        /// </summary>
+        /// <param name="idProperty"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public PropertyDto GetPropertyById(int idProperty)
+        {
+            var property = GetProperty(idProperty);
+            return _mapper.Map<PropertyDto>(property);
         }
 
         /// <summary>
@@ -260,6 +273,7 @@ namespace BackendTestApp.Business.Services
         private Property GetProperty(int id)
         {
             var property = _db.Properties.Include("PropertyOwner")
+                                         .Include("PropertyImages")
                                          .FirstOrDefault(p => p.IdProperty == id);
 
             if (property == null)

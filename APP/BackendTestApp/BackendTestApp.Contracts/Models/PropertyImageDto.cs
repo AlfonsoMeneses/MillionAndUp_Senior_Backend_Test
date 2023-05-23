@@ -14,6 +14,6 @@ namespace BackendTestApp.Contracts.Models
 
         public short Enabled { get; set; }
 
-        public PropertyDto Property { get; set; } = null!;
+        //public PropertyDto Property { get; set; } = null!;
     }
 }

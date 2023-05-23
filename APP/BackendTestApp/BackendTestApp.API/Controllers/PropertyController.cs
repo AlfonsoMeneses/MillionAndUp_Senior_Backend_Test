@@ -50,6 +50,35 @@ namespace BackendTestApp.API.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                var res = _service.GetPropertyById(id);
+                return Ok(res);
+            }
+            catch (PropertyException pex)
+            {
+                var res = new
+                {
+                    Error = pex.Message
+                };
+
+                return BadRequest(res);
+            }
+            catch (Exception)
+            {
+                var res = new
+                {
+                    Error = "Internal error, try later"
+                };
+
+                return StatusCode(500, res);
+            }
+        }
+
+
         [HttpPost]
         public IActionResult Create([FromBody] CreatePropertyRequest newProperty)
         {

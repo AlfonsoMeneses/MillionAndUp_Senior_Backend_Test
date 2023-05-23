@@ -21,5 +21,7 @@ namespace BackendTestApp.Contracts.Models
         public short Year { get; set; }
 
         public OwnerDto PropertyOwner { get; set; } = null!;
+
+        public ICollection<PropertyImageDto> PropertyImages { get; set; } = new List<PropertyImageDto>();
     }
 }
