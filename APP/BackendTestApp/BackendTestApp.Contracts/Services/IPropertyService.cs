@@ -37,7 +37,7 @@ namespace BackendTestApp.Contracts.Services
         /// </summary>
         /// <param name="idProperty">Property ID</param>
         /// <param name="property">Data for update the property</param>
-        /// <returns></returns>
+        /// <returns>Property with it's data</returns>
         PropertyDto Update(int idProperty, PropertyDto property);
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BackendTestApp.Contracts.Services
         /// </summary>
         /// <param name="idProperty">Property ID</param>
         /// <param name="price">New Price</param>
-        /// <returns></returns>
+        /// <returns>Property with it's data</returns>
         PropertyDto ChangePrice(int idProperty, decimal price);
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace BackendTestApp.Contracts.Services
         /// </summary>
         /// <param name="idProperty">Property ID</param>
         /// <param name="image">image to add to property</param>
-        /// <returns></returns>
+        /// <returns>Property Images Data</returns>
         PropertyImageDto AddImage(int idProperty, byte[] image);
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace BackendTestApp.Contracts.Services
         /// </summary>
         /// <param name="idProperty">Property ID</param>
         /// <param name="idPropertyImage">Image ID</param>
-        /// <returns></returns>
+        /// <returns>Property Image</returns>
         byte[] GetImage(int idProperty, int idPropertyImage);
     }
 }
