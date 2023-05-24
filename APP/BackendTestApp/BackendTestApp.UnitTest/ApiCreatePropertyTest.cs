@@ -2,11 +2,6 @@
 using BackendTestApp.API.Request;
 using BackendTestApp.Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackendTestApp.UnitTest
 {
@@ -52,11 +47,11 @@ namespace BackendTestApp.UnitTest
             var property = new CreatePropertyRequest
             {
                 IdOwner = -1,
-                Name = "Testing"  ,
+                Name = "Testing",
                 Address = "Cra 34 #23-65a",
                 Price = 2400100,
                 Year = 2019
-            }; 
+            };
 
             var response = _controller.Create(property);
             Assert.IsAssignableFrom<BadRequestObjectResult>(response);
@@ -107,7 +102,7 @@ namespace BackendTestApp.UnitTest
             var property = new CreatePropertyRequest
             {
                 IdOwner = 2,
-                Name = "Duplicate Name - "+DateTime.Now.Ticks,
+                Name = "Duplicate Name - " + DateTime.Now.Ticks,
                 Address = "Cra 34 #23-65a",
                 Price = 2400100,
                 Year = 2019
@@ -115,7 +110,7 @@ namespace BackendTestApp.UnitTest
 
             _controller.Create(property);
 
-            var response =_controller.Create(property);
+            var response = _controller.Create(property);
 
             Assert.IsAssignableFrom<BadRequestObjectResult>(response);
 

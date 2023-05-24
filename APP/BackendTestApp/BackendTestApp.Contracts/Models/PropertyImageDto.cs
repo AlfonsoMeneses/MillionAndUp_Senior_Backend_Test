@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackendTestApp.Contracts.Models
+﻿namespace BackendTestApp.Contracts.Models
 {
     public class PropertyImageDto
     {
@@ -13,7 +7,5 @@ namespace BackendTestApp.Contracts.Models
         public string Image { get; set; } = null!;
 
         public short Enabled { get; set; }
-
-        //public PropertyDto Property { get; set; } = null!;
     }
 }

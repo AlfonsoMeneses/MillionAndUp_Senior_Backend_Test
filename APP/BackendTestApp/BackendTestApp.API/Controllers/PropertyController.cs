@@ -164,7 +164,7 @@ namespace BackendTestApp.API.Controllers
         }
 
         [HttpGet("{id}/image/{idPropertyImage}")]
-        public IActionResult GetImage(int id, int idPropertyImage )
+        public IActionResult GetImage(int id, int idPropertyImage)
         {
             try
             {

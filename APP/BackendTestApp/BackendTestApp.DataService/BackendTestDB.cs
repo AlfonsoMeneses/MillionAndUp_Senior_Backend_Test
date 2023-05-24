@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using BackendTestApp.DataService.Entities;
+﻿using BackendTestApp.DataService.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendTestApp.DataService;

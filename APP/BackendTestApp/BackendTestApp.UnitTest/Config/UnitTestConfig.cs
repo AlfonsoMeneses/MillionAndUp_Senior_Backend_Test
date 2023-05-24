@@ -5,12 +5,6 @@ using BackendTestApp.Business.Services;
 using BackendTestApp.Contracts.Models;
 using BackendTestApp.DataService;
 using BackendTestApp.DataService.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackendTestApp.UnitTest.Config
 {

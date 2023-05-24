@@ -7,12 +7,6 @@ using BackendTestApp.DataService;
 using BackendTestApp.DataService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackendTestApp.Business.Services
 {
@@ -195,7 +189,7 @@ namespace BackendTestApp.Business.Services
                 propertyToUpdate.Year = property.Year;
             }
 
-            if (property.PropertyOwner != null && property.PropertyOwner.IdOwner >0 && property.PropertyOwner.IdOwner != propertyToUpdate.IdOwner)
+            if (property.PropertyOwner != null && property.PropertyOwner.IdOwner > 0 && property.PropertyOwner.IdOwner != propertyToUpdate.IdOwner)
             {
                 var owner = _db.Owners.FirstOrDefault(o => o.IdOwner == property.PropertyOwner.IdOwner);
 

@@ -1,13 +1,8 @@
-﻿using Azure;
-using BackendTestApp.API.Controllers;
+﻿using BackendTestApp.API.Controllers;
 using BackendTestApp.API.Request;
 using BackendTestApp.Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BackendTestApp.UnitTest
 {

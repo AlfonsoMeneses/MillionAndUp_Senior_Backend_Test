@@ -2,11 +2,6 @@
 using BackendTestApp.API.Request;
 using BackendTestApp.Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackendTestApp.UnitTest
 {
@@ -44,7 +39,7 @@ namespace BackendTestApp.UnitTest
 
             var idProperty = 9;
 
-            var response = _controller.ChangePrice(idProperty,property);
+            var response = _controller.ChangePrice(idProperty, property);
             Assert.IsAssignableFrom<BadRequestObjectResult>(response);
 
             Assert.IsTrue(((BadRequestObjectResult)response).StatusCode == 400);

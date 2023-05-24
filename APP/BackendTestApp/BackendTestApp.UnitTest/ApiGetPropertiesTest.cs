@@ -39,7 +39,7 @@ namespace BackendTestApp.UnitTest
 
             Assert.IsAssignableFrom<List<PropertyDto>>(response.Value);
 
-            var lstResponse =  response.Value;
+            var lstResponse = response.Value;
 
             Assert.IsNotNull(lstResponse);
 
