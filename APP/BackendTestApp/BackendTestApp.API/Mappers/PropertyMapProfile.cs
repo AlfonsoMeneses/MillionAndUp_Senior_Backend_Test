@@ -10,10 +10,7 @@ namespace BackendTestApp.API.Mappers
         {
             
             CreateMap<EditPropertyRequest, OwnerDto>();
-            CreateMap<EditPropertyRequest, PropertyDto>()//.ForMember(p => p.Name, map=> map.MapFrom(e => e.Name))
-                                                         //.ForMember(p => p.Price, map => map.MapFrom(e => e.Price))
-                                                         //.ForMember(p => p.Price, map => map.MapFrom(e => e.Price))
-                                                         .ForMember(p => p.PropertyOwner, 
+            CreateMap<EditPropertyRequest, PropertyDto>().ForMember(p => p.PropertyOwner, 
                                                                     map => map.MapFrom(s =>s)); 
             
         }

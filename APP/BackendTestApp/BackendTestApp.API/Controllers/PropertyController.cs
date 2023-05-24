@@ -4,7 +4,6 @@ using BackendTestApp.API.Request;
 using BackendTestApp.Contracts.Exceptions;
 using BackendTestApp.Contracts.Models;
 using BackendTestApp.Contracts.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendTestApp.API.Controllers
@@ -197,11 +196,21 @@ namespace BackendTestApp.API.Controllers
         {
             try
             {
+                if (Request.ContentType == null || !Request.ContentType.Contains("multipart/form-data"))
+                {
+                    throw new PropertyException("Invalid Content Type");
+                }
+
+                if (Request.Form.Files.Count == 0)
+                {
+                    throw new PropertyException("Image required");
+                }
+
                 var image = Request.Form.Files[0];
 
                 if (image == null || image.Length <= 0)
                 {
-                    throw new PropertyException("Invalide Image");
+                    throw new PropertyException("Invalid Image");
                 }
 
                 var file = FileHelper.GetFileBytes(image);

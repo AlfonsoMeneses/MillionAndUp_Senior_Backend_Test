@@ -40,9 +40,16 @@ namespace BackendTestApp.Business.Services
         {
             //Validations 
 
-            if (name.Trim().IsNullOrEmpty())
+            if (name == null || name.Trim().IsNullOrEmpty())
             {
                 throw new PropertyException("Name Is Required");
+            }
+
+            var nProperties = _db.Properties.Where(p => p.Name.ToUpper().Trim().Equals(name.ToUpper().Trim())).Count();
+
+            if (nProperties > 0)
+            {
+                throw new PropertyException("There is another property with that name");
             }
 
             if (address.Trim().IsNullOrEmpty())
@@ -188,7 +195,7 @@ namespace BackendTestApp.Business.Services
                 propertyToUpdate.Year = property.Year;
             }
 
-            if (property.PropertyOwner != null && property.PropertyOwner.IdOwner != propertyToUpdate.IdOwner)
+            if (property.PropertyOwner != null && property.PropertyOwner.IdOwner >0 && property.PropertyOwner.IdOwner != propertyToUpdate.IdOwner)
             {
                 var owner = _db.Owners.FirstOrDefault(o => o.IdOwner == property.PropertyOwner.IdOwner);
 
