@@ -25,6 +25,11 @@ namespace BackendTestApp.Business.Services
         /// </summary>
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Minimun Year To Validate
+        /// </summary>
+        private const int MINIMUM_YEAR = 1900;
+
         public PropertyService(BackendTestDB db, IMapper mapper)
         {
             _db = db;
@@ -74,7 +79,7 @@ namespace BackendTestApp.Business.Services
             }
 
             //Year Validation
-            if (year < 1900)
+            if (year < MINIMUM_YEAR)
             {
                 throw new PropertyException("Invalid Year");
             }
@@ -219,9 +224,13 @@ namespace BackendTestApp.Business.Services
             }
 
             ////Year validation to update
-            if (property.Year >= 1900 && property.Year != propertyToUpdate.Year)
+            if (property.Year >= MINIMUM_YEAR && property.Year != propertyToUpdate.Year)
             {
                 propertyToUpdate.Year = property.Year;
+            }
+            else if (property.Year < MINIMUM_YEAR)
+            {
+                throw new PropertyException("Invalid Year");
             }
 
             ////Owner validation to update
